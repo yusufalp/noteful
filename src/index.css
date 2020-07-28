@@ -11,3 +11,82 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.header {
+  padding-top: 36px;
+  height: 120px;
+  font-size: 3rem;
+  text-decoration: none;
+}
+
+/* The sidebar menu */
+.sidenav {
+  height: auto; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #fff; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  margin-top: 156px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  border: 1px solid #000;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.notes {
+  border: 1px solid;
+  margin: auto 12px 24px 180px;
+  text-align: left;
+  padding: 8px;
+}
+
+.noteCard {
+  border: 1px solid;
+  margin: auto 12px 24px 180px;
+  text-align: left;
+  padding: 8px;
+}
+
+.noteContent {
+  margin: auto 12px 24px 180px;
+  text-align: left;
+  padding: 8px;
+}
+
+button {
+  border: 1px solid;
+  background-color: #fff;
+  font-size: 1rem;
+  padding: 8px 4px;
+  margin: 12px auto;
+}
+
+.goBack {
+  display: block;
+}
+
+.addfolder {
+  width: 100%;
+}
+
+.group {
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  flex: 1;
+}
+
+.item-3 {
+  flex: 3;
+}
