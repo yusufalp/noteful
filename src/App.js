@@ -3,62 +3,65 @@ import { Route, Link, Switch } from 'react-router-dom';
 import Sidebar from './Components/Sidebar';
 import FolderPage from './Components/FolderPage';
 import NotePage from './Components/NotePage';
-import STORE from './Components/STORE';
 import './App.css';
+import NotesContext from './Components/NotesContext';
 
 class App extends React.Component {
   state = {
-    folders: STORE.folders,
-    notes: STORE.notes
+    folders: [],
+    notes: []
+  }
+  deleteNote = (noteId, history) => {
+    fetch(`http://localhost:9090/notes/${noteId}`, {
+      method: 'DELETE'
+    })
+    .then( () => {
+      this.componentDidMount()
+      history.push('/')
+    })
+  }
+  componentDidMount() {
+    fetch('http://localhost:9090/folders')
+      .then(res => res.json())
+      .then(folders => {
+        this.setState({
+          folders: folders
+        })
+        return fetch('http://localhost:9090/notes')
+      })
+      .then(res => res.json())
+      .then(notes => {
+        this.setState({
+          notes: notes
+        })
+      })
+      .catch(err => console.log(err))
   }
   render() {
+    const value = {
+      folders: this.state.folders,
+      notes: this.state.notes,
+      deleteNote: this.deleteNote
+    }
     return (
-      <div className="App">
-        <header className='header'>
-          <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit'}}>Noteful</Link>
-        </header>
-        <aside>
-          <Switch>
-            <Route path='/notes/:noteId'
-              render={routerProps => (
-                <Sidebar
-                  notes={this.state.notes}
-                  folders={this.state.folders}
-                  history={routerProps.history}
-                  match={routerProps.match} />
-              )}
-            />
-            <Route path='/'
-              render={routerProps => (
-                <Sidebar
-                  notes={this.state.notes}
-                  folders={this.state.folders}
-                  history={routerProps.history}
-                  match={routerProps.match} />
-              )}
-            />
-          </Switch>
-        </aside>
-        <main>
-          <Route exact path='/'
-            render={routerProps => (
-              <FolderPage notes={this.state.notes} match={routerProps.match} />
-            )}
-          />
-          <Route
-            path='/folders/:folderId'
-            render={routerProps => (
-              <FolderPage notes={this.state.notes} match={routerProps.match} />
-            )}
-          />
-          <Route
-            path='/notes/:noteId'
-            render={routerProps => (
-              <NotePage notes={this.state.notes} match={routerProps.match} />
-            )}
-          />
-        </main>
-      </div>
+      <NotesContext.Provider value={value}>
+        <div className="App">
+          <header className='header'>
+            <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit' }}>Noteful</Link>
+          </header>
+          <aside>
+            <Switch>
+              <Route path='/notes/:noteId' component={Sidebar} />
+              <Route path='/' component={Sidebar} />
+            </Switch>
+          </aside>
+          <main>
+            <Route exact path='/' component={FolderPage} />
+            <Route path='/folders/:folderId' component={FolderPage} />
+            <Route path='/notes/:noteId' component={NotePage} />
+          </main>
+        </div>
+      </NotesContext.Provider>
     );
   }
 }

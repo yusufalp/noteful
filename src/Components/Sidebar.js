@@ -1,14 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import NotesContext from './NotesContext';
 
 class Sidebar extends React.Component {
+  static contextType = NotesContext;
   render() {
     let folder;
     if(this.props.match.params.noteId){
-      const note = this.props.notes.find(note =>
+      const note = this.context.notes.find(note =>
         note.id === this.props.match.params.noteId 
       )
-      folder = this.props.folders.find(folder =>
+      folder = this.context.folders.find(folder =>
         folder.id === note.folderId
       )
     }
@@ -23,7 +25,7 @@ class Sidebar extends React.Component {
           ) :
           (
             <>
-              {this.props.folders.map((folder, i) =>
+              {this.context.folders.map((folder, i) =>
                 <NavLink key={i} id={folder.id} to={`/folders/${folder.id}`} >{folder.name}</NavLink>
               )}
               <button className='addfolder' type='button'>Add Folder</button>
