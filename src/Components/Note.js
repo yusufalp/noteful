@@ -24,8 +24,8 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-  note: PropTypes.array, 
-  value: PropTypes.array, 
+  note: PropTypes.object, 
+  value: PropTypes.object, 
   history: PropTypes.any
 }
 

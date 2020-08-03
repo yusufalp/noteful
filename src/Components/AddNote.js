@@ -7,17 +7,21 @@ import ValidationError from './ValidationError';
 
 class AddNote extends React.Component {
   static contextType = NotesContext;
-  state = {
-    name: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ''
+    }
   }
   addNote = (event) => {
     event.preventDefault();
+
     const name = event.target.name.value;
     const content = event.target.content.value;
 
     const folderName = event.target.folderName.value;
-    const matchFolder = this.context.folders.filter(folder => folder.name === folderName);
-    const folderId = matchFolder[0].id
+    const matchFolder = this.context.folders.find(folder => folder.name === folderName);
+    const folderId = matchFolder.id
 
     const modified = moment(new Date().toLocaleDateString(), "MM-DD-YYYY");
 
@@ -40,14 +44,9 @@ class AddNote extends React.Component {
   }
   updateNoteName(value) {
     this.setState({ name: value })
-    // this.validateNoteName(value);
   }
   validateNoteName() {
-    if (this.state.name) {
-      return ''
-    } else {
-      return 'Name is required'
-    }
+    return this.state.name ? '' : 'Name is required';
   }
   render() {
     return (
@@ -61,7 +60,7 @@ class AddNote extends React.Component {
           <FolderList />
           <label htmlFor='name'>Content</label>
           <textarea type='text' name='content' id='content' />
-          <button type='submit'>Add note</button>
+          <button type='submit' disabled={!this.state.name}>Add note</button>
         </div>
       </form>
     )

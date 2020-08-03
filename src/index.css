@@ -92,6 +92,7 @@ button {
 label {
   display: block;
   font-size: 24px;
+  margin-top: 24px;
   text-align: left;
 }
 
