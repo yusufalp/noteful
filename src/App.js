@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link, Switch, withRouter } from 'react-router-dom';
 import Sidebar from './Components/Sidebar';
 import FolderPage from './Components/FolderPage';
 import NotePage from './Components/NotePage';
@@ -20,7 +20,7 @@ class App extends React.Component {
     })
       .then(() => {
         this.componentDidMount()
-        history.push('/')
+        this.props.history.push('/')
       })
   }
   componentDidMount() {
@@ -77,4 +77,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App)

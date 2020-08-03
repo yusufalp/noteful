@@ -10,12 +10,16 @@ class Note extends React.Component {
         <div className='group'>
           <div className='item-3'>
             <h2>
-              <Link to={'/notes/' + this.props.note.id} style={{ color: 'inherit', textDecoration: 'inherit' }}>{this.props.note.name}</Link>
+              <Link
+                to={'/notes/' + this.props.note.id}
+                style={{ color: 'inherit', textDecoration: 'inherit' }}>{this.props.note.name}</Link>
             </h2>
             <p>Date modified on {moment(this.props.note.modified).format('MM-DD-YYYY')}</p>
           </div>
           <div className='item'>
-            <button onClick={e => this.props.value.deleteNote(this.props.note.id, this.props.history)} type='button'>Delete Note</button>
+            <button
+              onClick={e => this.props.value.deleteNote(this.props.note.id, this.props.history)}
+              type='button'>Delete Note</button>
           </div>
         </div>
       </div>
@@ -24,8 +28,8 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-  note: PropTypes.object, 
-  value: PropTypes.object, 
+  note: PropTypes.object,
+  value: PropTypes.object,
   history: PropTypes.any
 }
 

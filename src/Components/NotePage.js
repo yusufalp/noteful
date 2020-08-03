@@ -18,7 +18,9 @@ export default function NotePage(props) {
                 <p>Date modified on {moment(note.modified).format('MM-DD-YYYY')}</p>
               </div>
               <div className='item'>
-                <button onClick={e => value.deleteNote(note.id, props.history)} type='button'>Delete Note</button>
+                <button
+                  onClick={e => value.deleteNote(note.id, props.history)}
+                  type='button'>Delete Note</button>
               </div>
             </div>
             <p className='noteContent'>{note.content}</p>
@@ -33,3 +35,4 @@ NotePage.propTypes = {
   match: PropTypes.any,
   history: PropTypes.any
 }
+
