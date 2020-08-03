@@ -7,6 +7,9 @@ import ValidationError from './ValidationError';
 
 class AddNote extends React.Component {
   static contextType = NotesContext;
+  state = {
+    name: ''
+  }
   addNote = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -36,12 +39,13 @@ class AddNote extends React.Component {
       })
   }
   updateNoteName(value) {
-    console.log(value)
-    this.validateNoteName(value);
+    this.setState({ name: value })
+    // this.validateNoteName(value);
   }
-  validateNoteName(name) {
-    console.log(typeof name)
-    if (typeof name !== 'string') {
+  validateNoteName() {
+    if (this.state.name) {
+      return ''
+    } else {
       return 'Name is required'
     }
   }

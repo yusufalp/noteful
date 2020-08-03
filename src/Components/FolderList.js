@@ -6,9 +6,9 @@ class FolderList extends React.Component {
   render() {
     return (
       <>
-        <select>
+        <select name='folderName' required>
         {this.context.folders.map((folder, i) => 
-          <option key={i}>{folder.name}</option>
+          <option key={i} >{folder.name}</option>
         )}
         </select>
       </>
