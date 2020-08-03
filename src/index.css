@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  margin-left: 180px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -33,7 +37,7 @@ code {
 }
 
 /* The navigation menu links */
-.sidenav a {
+.sidenav a, .addnote_button {
   border: 1px solid #000;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -42,22 +46,37 @@ code {
   display: block;
 }
 
+.addnote_button{
+  margin: auto 12px 24px 0;
+}
+
+.sidenav .addfolder_button{
+  margin-top: 24px;
+}
+
+.addfolder {
+  width: 100%;
+}
+
+.center-text {
+  text-align: center;
+}
 .notes {
   border: 1px solid;
-  margin: auto 12px 24px 180px;
+  margin: auto 12px 24px 0;
   text-align: left;
   padding: 8px;
 }
 
 .noteCard {
   border: 1px solid;
-  margin: auto 12px 24px 180px;
+  margin: auto 12px 24px 0;
   text-align: left;
   padding: 8px;
 }
 
 .noteContent {
-  margin: auto 12px 24px 180px;
+  margin: auto 12px 24px 0;
   text-align: left;
   padding: 8px;
 }
@@ -70,12 +89,19 @@ button {
   margin: 12px auto;
 }
 
-.goBack {
+label {
   display: block;
+  font-size: 24px;
+  text-align: left;
 }
 
-.addfolder {
-  width: 100%;
+#name, #folderName, #content {
+  display: block;
+  width: 90%;
+}
+
+.goBack {
+  display: block;
 }
 
 .group {

@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import NotesContext from './NotesContext';
+import PropTypes from 'prop-types';
 
 export default function NotePage(props) {
   return (
@@ -28,3 +29,7 @@ export default function NotePage(props) {
   )
 }
 
+NotePage.propTypes = {
+  match: PropTypes.any,
+  history: PropTypes.any
+}
