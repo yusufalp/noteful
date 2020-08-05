@@ -10,13 +10,14 @@ class AddNote extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ''
+      name: '',
+      content: ''
     }
   }
   addNote = (event) => {
     event.preventDefault();
 
-    const name = event.target.name.value;
+    const name = this.state.name;
     const content = event.target.content.value;
 
     const folderName = event.target.folderName.value;
@@ -41,26 +42,34 @@ class AddNote extends React.Component {
         this.context.getData()
         this.props.history.push('/')
       })
+      .catch(err => console.log(err))
   }
   updateNoteName(value) {
-    this.setState({ name: value })
+    this.setState({ name: value.trim() })
+  }
+  updateContent(value) {
+    this.setState({ content: value.trim() })
   }
   validateNoteName() {
-    return this.state.name ? '' : 'Name is required';
+    return this.state.name ? '' : 'Title is required';
+  }
+  validateContent() {
+    return this.state.content ? '' : 'Content is required';
   }
   render() {
     return (
       <form className='add-folder' onSubmit={this.addNote}>
         <h2>Add a new note</h2>
         <div className='form-group'>
-          <label htmlFor='name'>Name</label>
+          <label htmlFor='name'>Title</label>
           <input type='text' name='name' id='name' onChange={e => this.updateNoteName(e.target.value)} />
           <ValidationError message={this.validateNoteName()} />
           <label htmlFor='name'>Folder</label>
           <FolderList />
           <label htmlFor='name'>Content</label>
-          <textarea type='text' name='content' id='content' />
-          <button type='submit' disabled={!this.state.name}>Add note</button>
+          <textarea type='text' name='content' id='content' onChange={e => this.updateContent(e.target.value)} />
+          <ValidationError message={this.validateContent()} />
+          <button type='submit' disabled={!(this.state.name && this.state.content)}>Add note</button>
         </div>
       </form>
     )
