@@ -26,7 +26,7 @@ class AddNote extends React.Component {
 
     const modified = moment(new Date().toLocaleDateString(), "MM-DD-YYYY");
 
-    fetch(`http://localhost:9090/notes/`, {
+    fetch(`http://localhost:8000/api/notes/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

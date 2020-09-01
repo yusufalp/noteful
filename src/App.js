@@ -59,7 +59,7 @@ class App extends React.Component {
           </header>
           <aside>
             <Switch>
-              <Route path='/notes/:noteId' component={Sidebar} />
+              <Route path='/api/notes/:noteId' component={Sidebar} />
               <Route path='/' component={Sidebar} />
             </Switch>
           </aside>
@@ -67,7 +67,7 @@ class App extends React.Component {
             <NotesError>
               <Route exact path='/' component={FolderPage} />
               <Route path='/folders/:folderId' component={FolderPage} />
-              <Route path='/notes/:noteId' component={NotePage} />
+              <Route path='/api/notes/:noteId' component={NotePage} />
               <Route path='/add-folder' component={AddFolder} />
               <Route path='/add-note' component={AddNote} />
             </NotesError>

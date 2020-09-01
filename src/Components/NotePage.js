@@ -10,6 +10,7 @@ export default function NotePage(props) {
         const note = value.notes.find(note =>
           note.id === props.match.params.noteId
         )
+        console.log(note)
         return (
           <div>
             <div className='group noteCard'>
