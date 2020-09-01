@@ -15,7 +15,7 @@ class App extends React.Component {
     notes: []
   }
   deleteNote = (noteId, history) => {
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
       method: 'DELETE'
     })
       .then(() => {
@@ -28,13 +28,13 @@ class App extends React.Component {
     this.getData();
   }
   getData = () => {
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders')
       .then(res => res.json())
       .then(folders => {
         this.setState({
           folders: folders
         })
-        return fetch('http://localhost:9090/notes')
+        return fetch('http://localhost:8000/api/notes')
       })
       .then(res => res.json())
       .then(notes => {
