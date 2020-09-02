@@ -117,3 +117,7 @@ label {
 .item-3 {
   flex: 3;
 }
+
+.delete-folder-button{
+  color: crimson;
+}

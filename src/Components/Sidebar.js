@@ -9,10 +9,10 @@ class Sidebar extends React.Component {
     let folder;
     if (this.props.match.params.noteId) {
       const note = this.context.notes.find(note =>
-        note.id === this.props.match.params.noteId
+        note.id === parseInt(this.props.match.params.noteId)
       )
       folder = this.context.folders.find(folder =>
-        folder.id === note.folderId
+        folder.id === parseInt(note.folderId)
       )
     }
     return (

@@ -9,14 +9,23 @@ export default function FolderPage(props) {
     <NotesContext.Consumer>
       {value => {
         const notes = value.notes.filter(note =>
-          note.folderId === props.match.params.folderId || !props.match.params.folderId
+          note.folderId === parseInt(props.match.params.folderId) || !parseInt(props.match.params.folderId)
         )
+        let deleteFolderButton = '';
+        for (let key in props.match.params) {
+          if (key) {
+            deleteFolderButton = <button className="delete-folder-button"
+              onClick={e => value.deleteFolder(props.match.params.folderId, props.history)}
+              type='button'>Delete Folder</button>
+          }
+        }
         return (
           <article>
             {notes.map((note, i) => (
               <Note key={i} note={note} value={value} />
             ))}
             <Link to={'/add-note'} className='addnote_button'>Add Note</Link>
+            {deleteFolderButton}
           </article>
         )
       }

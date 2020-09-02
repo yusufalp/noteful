@@ -8,9 +8,8 @@ export default function NotePage(props) {
     <NotesContext.Consumer>
       {value => {
         const note = value.notes.find(note =>
-          note.id === props.match.params.noteId
+          note.id === parseInt(props.match.params.noteId)
         )
-        console.log(note)
         return (
           <div>
             <div className='group noteCard'>

@@ -24,6 +24,16 @@ class App extends React.Component {
       })
       .catch(err => console.log(err))
   }
+  deleteFolder = (folderId, history) => {
+    fetch(`http://localhost:8000/api/folders/${folderId}`, {
+      method: 'DELETE'
+    })
+    .then(() => {
+      this.componentDidMount()
+      this.props.history.push('/')
+    })
+      .catch(err => console.log(err))
+  }
   componentDidMount() {
     this.getData();
   }
@@ -49,6 +59,7 @@ class App extends React.Component {
       folders: this.state.folders,
       notes: this.state.notes,
       deleteNote: this.deleteNote,
+      deleteFolder: this.deleteFolder,
       getData: this.getData
     }
     return (
@@ -59,7 +70,7 @@ class App extends React.Component {
           </header>
           <aside>
             <Switch>
-              <Route path='/api/notes/:noteId' component={Sidebar} />
+              <Route path='/notes/:noteId' component={Sidebar} />
               <Route path='/' component={Sidebar} />
             </Switch>
           </aside>
@@ -67,7 +78,7 @@ class App extends React.Component {
             <NotesError>
               <Route exact path='/' component={FolderPage} />
               <Route path='/folders/:folderId' component={FolderPage} />
-              <Route path='/api/notes/:noteId' component={NotePage} />
+              <Route path='/notes/:noteId' component={NotePage} />
               <Route path='/add-folder' component={AddFolder} />
               <Route path='/add-note' component={AddNote} />
             </NotesError>
