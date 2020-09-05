@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Note extends React.Component {
   render() {

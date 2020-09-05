@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import NotesContext from './NotesContext';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function NotePage(props) {
   return (
@@ -18,6 +19,11 @@ export default function NotePage(props) {
                 <p>Date modified on {moment(note.modified).format('MM-DD-YYYY')}</p>
               </div>
               <div className='item'>
+                <div className='item'>
+                  <Link to={`/edit-note/` + note.id}>
+                    Edit
+                  </Link>
+                </div>
                 <button
                   onClick={e => value.deleteNote(note.id, props.history)}
                   type='button'>Delete Note</button>

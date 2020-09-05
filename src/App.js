@@ -8,6 +8,7 @@ import NotesContext from './Components/NotesContext';
 import AddFolder from './Components/AddFolder';
 import AddNote from './Components/AddNote';
 import NotesError from './Components/NotesError';
+import EditNote from './Components/EditNote';
 
 class App extends React.Component {
   state = {
@@ -81,6 +82,7 @@ class App extends React.Component {
               <Route path='/notes/:noteId' component={NotePage} />
               <Route path='/add-folder' component={AddFolder} />
               <Route path='/add-note' component={AddNote} />
+              <Route path='/edit-note/:noteId' component={EditNote} />
             </NotesError>
           </main>
         </div>
