@@ -4,6 +4,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import FolderList from './FolderList';
 import ValidationError from './ValidationError';
+import config from '../config';
 
 class AddNote extends React.Component {
   static contextType = NotesContext;
@@ -26,7 +27,8 @@ class AddNote extends React.Component {
 
     const modified = moment(new Date().toLocaleDateString(), "MM-DD-YYYY");
 
-    fetch(`http://localhost:8000/api/notes/`, {
+    const url = config.API_ENDPOINT
+    fetch(`${url}/api/notes/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

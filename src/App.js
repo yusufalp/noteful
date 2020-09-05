@@ -9,6 +9,7 @@ import AddFolder from './Components/AddFolder';
 import AddNote from './Components/AddNote';
 import NotesError from './Components/NotesError';
 import EditNote from './Components/EditNote';
+import config from './config';
 
 class App extends React.Component {
   state = {
@@ -16,7 +17,8 @@ class App extends React.Component {
     notes: []
   }
   deleteNote = (noteId, history) => {
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    const url = config.API_ENDPOINT
+    fetch(`${url}/api/notes/${noteId}`, {
       method: 'DELETE'
     })
       .then(() => {
@@ -26,26 +28,28 @@ class App extends React.Component {
       .catch(err => console.log(err))
   }
   deleteFolder = (folderId, history) => {
-    fetch(`http://localhost:8000/api/folders/${folderId}`, {
+    const url = config.API_ENDPOINT
+    fetch(`${url}/api/folders/${folderId}`, {
       method: 'DELETE'
     })
-    .then(() => {
-      this.componentDidMount()
-      this.props.history.push('/')
-    })
+      .then(() => {
+        this.componentDidMount()
+        this.props.history.push('/')
+      })
       .catch(err => console.log(err))
   }
   componentDidMount() {
     this.getData();
   }
   getData = () => {
-    fetch('http://localhost:8000/api/folders')
+    const url = config.API_ENDPOINT
+    fetch(`${url}/api/folders`)
       .then(res => res.json())
       .then(folders => {
         this.setState({
           folders: folders
         })
-        return fetch('http://localhost:8000/api/notes')
+        return fetch(`${url}/api/notes`)
       })
       .then(res => res.json())
       .then(notes => {

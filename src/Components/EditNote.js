@@ -1,5 +1,6 @@
 import React from 'react';
 import NotesContext from './NotesContext';
+import config from '../config';
 
 class EditNote extends React.Component {
   static contextType = NotesContext;
@@ -24,7 +25,8 @@ class EditNote extends React.Component {
       name: this.state.name,
       content: this.state.content,
     }
-    fetch('http://localhost:8000/api/notes/' + this.state.id, {
+    const url = config.API_ENDPOINT
+    fetch(`${url}/api/notes/${this.state.id}`, {
       method: 'PATCH',
       body: JSON.stringify(note),
       headers: {

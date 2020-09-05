@@ -2,6 +2,7 @@ import React from 'react';
 import NotesContext from './NotesContext';
 import PropTypes from 'prop-types';
 import ValidationError from './ValidationError';
+import config from '../config';
 
 class AddFolder extends React.Component {
   static contextType = NotesContext;
@@ -14,8 +15,8 @@ class AddFolder extends React.Component {
   addFolder = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
-
-    fetch(`http://localhost:8000/api/folders/`, {
+    const url = config.API_ENDPOINT
+    fetch(`${url}/api/folders/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
