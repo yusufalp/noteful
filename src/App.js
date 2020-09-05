@@ -74,26 +74,28 @@ class App extends React.Component {
           <header className='header center-text'>
             <Link to='/' style={{ color: 'inherit', textDecoration: 'inherit' }}>Noteful</Link>
           </header>
-          <aside>
-            <Switch>
-              <Route path='/notes/:noteId' component={Sidebar} />
-              <Route path='/' component={Sidebar} />
-            </Switch>
-          </aside>
-          <main>
-            <NotesError>
-              <Route exact path='/' component={FolderPage} />
-              <Route path='/folders/:folderId' component={FolderPage} />
-              <Route path='/notes/:noteId' component={NotePage} />
-              <Route path='/add-folder' component={AddFolder} />
-              <Route path='/add-note' component={AddNote} />
-              <Route path='/edit-note/:noteId' component={EditNote} />
-            </NotesError>
-          </main>
+          <div className='main-group'>
+            <aside className='main-item'>
+              <Switch>
+                <Route path='/notes/:noteId' component={Sidebar} />
+                <Route path='/' component={Sidebar} />
+              </Switch>
+            </aside>
+            <main className='main-item'>
+              <NotesError>
+                <Route exact path='/' component={FolderPage} />
+                <Route path='/folders/:folderId' component={FolderPage} />
+                <Route path='/notes/:noteId' component={NotePage} />
+                <Route path='/add-folder' component={AddFolder} />
+                <Route path='/add-note' component={AddNote} />
+                <Route path='/edit-note/:noteId' component={EditNote} />
+              </NotesError>
+            </main>
+          </div>
         </div>
       </NotesContext.Provider>
     );
   }
 }
 
-export default withRouter(App)
+export default App;

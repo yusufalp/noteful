@@ -19,9 +19,9 @@ export default function NotePage(props) {
                 <p>Date modified on {moment(note.modified).format('MM-DD-YYYY')}</p>
               </div>
               <div className='item'>
-                <div className='item'>
+                <div className='item edit-button'>
                   <Link to={`/edit-note/` + note.id}>
-                    Edit
+                    Edit Note
                   </Link>
                 </div>
                 <button

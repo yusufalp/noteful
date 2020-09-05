@@ -25,19 +25,27 @@ code {
 
 /* The sidebar menu */
 .sidenav {
-  height: auto; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: auto;
+  /* Full-height: remove this if you want "auto" height */
+  width: 160px;
+  /* Set the width of the sidebar */
+  position: fixed;
+  /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  /* Stay at the top */
   left: 0;
-  background-color: #fff; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
+  background-color: #fff;
+  /* Black */
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
   margin-top: 156px;
 }
 
 /* The navigation menu links */
-.sidenav a, .addnote_button {
+.sidenav a,
+.addnote_button {
   border: 1px solid #000;
   padding: 6px 8px 6px 16px;
   text-decoration: none;
@@ -46,11 +54,11 @@ code {
   display: block;
 }
 
-.addnote_button{
+.addnote_button {
   margin: auto 12px 24px 0;
 }
 
-.sidenav .addfolder_button{
+.sidenav .addfolder_button {
   margin-top: 24px;
 }
 
@@ -61,6 +69,7 @@ code {
 .center-text {
   text-align: center;
 }
+
 .notes {
   border: 1px solid;
   margin: auto 12px 24px 0;
@@ -87,6 +96,24 @@ button {
   font-size: 1rem;
   padding: 8px 4px;
   margin: 12px auto;
+
+  cursor: pointer;
+}
+
+.edit-button {
+  border: 1px solid;
+  font-size: 1rem;
+  padding: 8px 4px;
+  /* width: 43%;
+  max-width: 85px; */
+}
+
+.edit-button:hover {
+  cursor: pointer;
+}
+
+.edit-button a {
+  text-decoration: none;
 }
 
 label {
@@ -96,7 +123,9 @@ label {
   text-align: left;
 }
 
-#name, #folderName, #content {
+#name,
+#folderName,
+#content {
   display: block;
   width: 90%;
 }
@@ -118,6 +147,23 @@ label {
   flex: 3;
 }
 
-.delete-folder-button{
+.delete-folder-button {
   color: crimson;
+}
+
+.main-group {
+  display: flex;
+  flex-direction: column;
+}
+
+@media all and (min-width: 587px) {
+  .edit-button {
+    width: 85px;
+  }
+}
+
+@media all and (max-width: 350px) {
+  .main-group {
+    flex-direction: row;
+  }
 }
