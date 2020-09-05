@@ -18,6 +18,7 @@ class App extends React.Component {
   }
   deleteNote = (noteId, history) => {
     const url = config.API_ENDPOINT
+    console.log(url);
     fetch(`${url}/api/notes/${noteId}`, {
       method: 'DELETE'
     })
