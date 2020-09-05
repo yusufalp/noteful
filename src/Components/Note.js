@@ -2,8 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import NotesContext from './NotesContext';
 
 class Note extends React.Component {
+  static contextType = NotesContext
   render() {
     return (
       <div id={this.props.note.id} className='notes'>
@@ -18,7 +20,7 @@ class Note extends React.Component {
           </div>
           <div className='item'>
             <button
-              onClick={e => this.props.value.deleteNote(this.props.note.id, this.props.history)}
+              onClick={e => this.context.deleteNote(this.props.note.id, this.props.history)}
               type='button'>Delete Note</button>
           </div>
         </div>
